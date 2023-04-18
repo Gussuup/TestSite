@@ -7,4 +7,4 @@ def index(request):
                                             #объект HttpResponse с этим визуализированным кодом
 
 def about(request):
-    return HttpResponse('<h4>About</h4>')
+    return render(request, 'main/about.html')
