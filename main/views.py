@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
+from .models import Task
 
 def index(request):
-    return render(request, 'main/index.html')           #Объединяет заданный шаблон с заданным контекстным словарем и возвращает
-                                                        #объект HttpResponse с этим визуализированным кодом
+    tasks = Task.objects.all()                                                                                          #помещение в переменную всех объектов из модели Task
+
+    return render(request, 'main/index.html', {'title': 'Главная страница сайта', 'tasks': tasks})                                     #Объединяет заданный шаблон с заданным контекстным словарем и возвращает
+                                                                                                                        #объект HttpResponse с этим визуализированным кодом
 
 def about(request):
     return render(request, 'main/about.html')
+
